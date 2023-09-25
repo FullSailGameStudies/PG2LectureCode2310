@@ -95,7 +95,7 @@ int main()
         2) using the push_back(item) method.
     */
     std::vector<std::string> names { "Batman", "Bruce Wayne", "The Best" };
-    names.push_back("The Greatest Detective");
+    names.push_back("The Greatest Detective");//add the BACK (end) of the vector
     names.push_back("The Bat");
     names.push_back("The Joker");
     names.push_back("Bane");
@@ -109,6 +109,11 @@ int main()
             Add a few grades to the grades vector.
 
     */
+    std::vector<float> grades;
+    grades.push_back(rand() % 101);
+    grades.push_back(rand() % 101);
+    grades.push_back(rand() % 101);
+    grades.push_back(rand() % 101);
 
 
 
@@ -125,7 +130,7 @@ int main()
     // begin() -- returns an iterator pointing to the first element
     // end() – returns an iterator pointing to the element AFTER the last element
     std::cout << "--- for loop:\n";
-    for (size_t i = 0; i < names.size(); i++)
+    for (int i = 0; i < names.size(); i++)
     {
         std::cout << names[i] << "\n";
     }
@@ -140,7 +145,7 @@ int main()
     std::cout << "\n\n";
 
     std::cout << "--- Range-based for loop:\n";
-    for (auto& name : names)
+    for (std::string name : names)
         std::cout << name << std::endl;
     std::cout << "\n\n";
 
@@ -150,6 +155,15 @@ int main()
             loop over the grades vector and print out each grade
 
     */
+    std::cout << "\n\n   PG2 Grades   \n";
+    for (float& grade : grades)
+    {
+        std::cout << grade << "\n";
+    }
+    for (size_t i = 0; i < grades.size(); i++)
+    {
+        std::cout << grades[i] << "\n";
+    }
 
 
 
@@ -168,6 +182,9 @@ int main()
 
     */
     print(names);
+
+    //remove the joker. 6th item or 5 after the first item.
+    names.erase(names.end()-1);
 
     std::cout << "\nerase the 5th item (" << names[4] << ")\n";
     names.erase(names.begin() + 4); //the position is the 4th item AFTER the first element. in other words, the 5th item.
@@ -195,6 +212,7 @@ int main()
             Print the grades.
 
     */
+    grades.erase(grades.end() - 1);
 
 
 
