@@ -29,6 +29,12 @@ int main()
         2) if the method returns data, it is usually best to store that data in a variable on the line where you call the method.
 
     */
+    Calculator t800;
+    //to talk to NON-static methods, use the variable
+    int n1 = 5, n2 = 10;
+    int result = t800.minus(n1, n2);//pass by value. making a COPY of these variables.
+    //to talk to the STATIC method, use the CLASS NAME
+    double factor = Calculator::mult(5, 3);
 
     /*
         ╔══════════════════════════╗
