@@ -52,7 +52,7 @@ int main()
 
     //Examples:
     //  calling a static method, prefix with the class name...
-    double factor = Calculator::mult(5, 3);
+    factor = Calculator::mult(5, 3);
 
     //calling a non-static method, use the variable...
     Calculator t1000;
@@ -68,6 +68,10 @@ int main()
             Call the method on the t1000 calculator instance and print the results.
 
     */
+    int challenge1 = 12;
+    bool evenOrNot = t1000.isEven(challenge1);
+    //ternary operator. (condition) ? true block : false block
+    std::cout << "\nChallenge 1:\nIs this number even? " << challenge1 << " " << ((evenOrNot) ? "TRUE" : "FALSE") << "\n";
 
 
 
