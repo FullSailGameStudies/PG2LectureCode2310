@@ -226,5 +226,7 @@ int main()
             3) print the average that is returned.
 
     */
+    float avg = t1000.Average(grades);
+    std::cout << "Average grade in PG2 for October: " << avg << "!\n";
 
 }

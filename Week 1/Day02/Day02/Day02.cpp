@@ -5,31 +5,6 @@
 #include <string>
 #include <vector>
 
-bool postFix(std::string& hero)
-{
-    srand((unsigned int)time(NULL));
-    int postFixNumber = rand() % 1000;
-    hero = hero + "-" + std::to_string(postFixNumber);
-    return postFixNumber % 2 == 0;
-}
-
-float average(const std::vector<int>& scores)
-{
-    //scores.push_back(5); //not allowed because it is marked as const
-    float sum = 0;
-    for (auto score : scores)
-        sum += score;
-
-    return sum / scores.size();
-}
-
-void print(const std::vector<int>& scores)
-{
-    std::cout << "----SCORES----\n";
-    int index = 1;
-    for (int score : scores)
-        std::cout << index++ << ". " << score << "\n";
-}
 
 void printInfo(const std::vector<int>& scores)
 {
@@ -48,7 +23,7 @@ int main()
             This is because the parameter is actually just a new name for the other variable.
     */
     std::string spider = "Spiderman";
-    bool isEven = postFix(spider);
+    bool isEven = false;// postFix(spider);
     std::string evenResult = (isEven) ? "TRUE" : "FALSE";
     std::cout << spider << "\n" << "Is Even postfix? " << evenResult << "\n";
 
@@ -76,7 +51,7 @@ int main()
     std::vector<int> highScores;
     for (int i = 0; i < 10; ++i)
         highScores.push_back(rand());
-    float avg = average(highScores);
+    float avg = 0;// average(highScores);
 
 
 
@@ -106,7 +81,7 @@ int main()
         erase(starting position, ending position) - removes a range of elements. the end position is not erased.
 
     */
-    print(highScores);
+    //print(highScores);
 
     for (size_t i = 0; i < highScores.size();)
     {
@@ -128,7 +103,7 @@ int main()
     */
 
 
-    print(highScores);
+    //print(highScores);
 
 
 

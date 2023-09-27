@@ -1,4 +1,6 @@
 #pragma once
+#include <vector>
+
 class Calculator
 {
 public:
@@ -8,5 +10,7 @@ public:
 	static double mult(double num, double factor);
 
 	bool isEven(int number);
+
+	float Average(std::vector<float> numbers);
 };
 
