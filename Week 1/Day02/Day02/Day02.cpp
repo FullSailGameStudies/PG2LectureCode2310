@@ -155,6 +155,7 @@ int main()
     }
 
     print(highScores);
+    printInfo(highScores);
 
 
     /*
@@ -179,6 +180,15 @@ int main()
             Remove all the failing grades (grades < 59.5).
             Print the grades.
     */
+    PrintGrades(grades);
+    for (size_t i = 0; i < grades.size();)
+    {
+        if (grades[i] < 59.5)
+            grades.erase(grades.begin() + i);
+        else
+            ++i;
+    }
+    PrintGrades(grades);
 
 
 
