@@ -8,6 +8,14 @@
 #include "Course.h"
 
 
+void print(const std::vector<int>& scores)
+{
+    std::cout << "----SCORES----\n";
+    int index = 1;
+    for (int score : scores)
+        std::cout << index++ << ". " << score << "\n";
+}
+
 void printInfo(const std::vector<int>& scores)
 {
     std::cout << "size: " << scores.size() << "\tcapacity: " << scores.capacity() << "\n";
@@ -92,8 +100,13 @@ int main()
     pg2.Print(myCourse);
 
     std::vector<int> highScores;
-    for (int i = 0; i < 10; ++i)
-        highScores.push_back(rand());
+    highScores.reserve(20);
+    printInfo(highScores);
+    for (int i = 0; i < 21; ++i)
+    {
+        highScores.push_back(rand() % 5000);
+        printInfo(highScores);
+    }
     float avg = 0;// average(highScores);
 
 
@@ -129,15 +142,19 @@ int main()
         erase(starting position, ending position) - removes a range of elements. the end position is not erased.
 
     */
-    //print(highScores);
+    print(highScores);
 
     for (size_t i = 0; i < highScores.size();)
     {
         if (highScores[i] < 2500)
+        {
             highScores.erase(highScores.begin() + i);
+        }
         else
             ++i;
     }
+
+    print(highScores);
 
 
     /*
