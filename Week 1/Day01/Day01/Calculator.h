@@ -11,6 +11,6 @@ public:
 
 	bool isEven(int number);
 
-	float Average(std::vector<float> numbers);
+	float Average(std::vector<float>& numbers);
 };
 

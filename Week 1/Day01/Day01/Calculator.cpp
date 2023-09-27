@@ -15,7 +15,7 @@ bool Calculator::isEven(int number)
 	return number % 2 == 0;
 }
 
-float Calculator::Average(std::vector<float> numbers)
+float Calculator::Average(std::vector<float>& numbers)
 {
 	float avg = 0;
 	for (float& number : numbers)

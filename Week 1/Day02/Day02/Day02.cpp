@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <iomanip>
 
 
 void printInfo(const std::vector<int>& scores)
@@ -11,8 +12,24 @@ void printInfo(const std::vector<int>& scores)
     std::cout << "size: " << scores.size() << "\tcapacity: " << scores.capacity() << "\n";
 }
 
+bool postFix(std::string& name)
+{
+    int num = rand();
+    name = name + "-" + std::to_string(num);
+    return num % 2 == 0;
+}
+
+void FillGrades(std::vector<float>& pg2)
+{
+    for (size_t i = 0; i < 10; i++)
+    {
+        pg2.push_back(rand() % 101);
+    }
+}
+
 int main()
 {
+    srand(time(NULL));
     /*
         ╔══════════════════════════════╗
         ║Parameters: Pass by Reference.║
@@ -23,7 +40,7 @@ int main()
             This is because the parameter is actually just a new name for the other variable.
     */
     std::string spider = "Spiderman";
-    bool isEven = false;// postFix(spider);
+    bool isEven = postFix(spider);
     std::string evenResult = (isEven) ? "TRUE" : "FALSE";
     std::cout << spider << "\n" << "Is Even postfix? " << evenResult << "\n";
 
@@ -37,7 +54,12 @@ int main()
 
     */
     std::vector<float> grades;
-
+    FillGrades(grades);
+    std::cout << "\n---PG2 2310---\n";
+    for (auto& grade : grades)
+    {
+        std::cout << std::setw(8) <<  grade << "\n";
+    }
 
 
     /*
