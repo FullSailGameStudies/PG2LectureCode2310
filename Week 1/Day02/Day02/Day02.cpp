@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <iomanip>
+#include "Course.h"
 
 
 void printInfo(const std::vector<int>& scores)
@@ -24,6 +25,27 @@ void FillGrades(std::vector<float>& pg2)
     for (size_t i = 0; i < 10; i++)
     {
         pg2.push_back(rand() % 101);
+    }
+}
+
+void PrintGrades(const std::vector<float>& grades)
+{
+    std::cout << "\n---PG2 2310---\n";
+    for (auto& grade : grades)
+    {
+        std::cout << std::setw(8) << grade << "\n";
+    }
+}
+
+void GetStats(const std::vector<float>& grades, float& min, float& max)
+{
+    min = grades[0];
+    max = grades[0];
+
+    for (auto& grade : grades)
+    {
+        if (min > grade) min = grade;
+        max = std::max<float>(max, grade);
     }
 }
 
@@ -55,11 +77,6 @@ int main()
     */
     std::vector<float> grades;
     FillGrades(grades);
-    std::cout << "\n---PG2 2310---\n";
-    for (auto& grade : grades)
-    {
-        std::cout << std::setw(8) <<  grade << "\n";
-    }
 
 
     /*
@@ -70,6 +87,10 @@ int main()
 
         This is the way you pass by reference and prevent the method from changing the variable.
     */
+    Course pg2;
+    std::string myCourse = "PG2 2310";
+    pg2.Print(myCourse);
+
     std::vector<int> highScores;
     for (int i = 0; i < 10; ++i)
         highScores.push_back(rand());
@@ -82,10 +103,15 @@ int main()
 
             Write a method to calculate the stats on a vector of grades
             1) create a method to calculate the min, max. 
-                pass the grades vector as a const reference. Use ref parameters for min and max.
+                pass the grades vector as a const reference. 
+                 Use ref parameters for min and max.
             2) call the method in main and print out the min, max.
 
     */
+    float minGrade, maxGrade;
+    PrintGrades(grades);
+    GetStats(grades, minGrade, maxGrade);
+    std::cout << "Min Grade: " << minGrade << "\tMax grade: " << maxGrade << "\n";
 
 
 
