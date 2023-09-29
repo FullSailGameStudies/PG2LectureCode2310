@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "ThemeSong.h"
 
 std::string postFix(std::string fileName, int postFixNumber = 1) //postFixNumber is optional
 {
@@ -12,6 +13,7 @@ std::string postFix(std::string fileName, int postFixNumber = 1) //postFixNumber
 
 int main()
 {
+    std::cout << "\033[1;31mbold red text\033[0m\n";
 
     /*
         ╔═══════════════════════════════╗
@@ -47,7 +49,9 @@ int main()
             EX: if 6 is passed, print "na na na na na na Batman"
 
     */
-
+    //ThemeSong musicBox;
+    ThemeSong::BatTheme();//traditional theme
+    ThemeSong::BatTheme(25); //EP (extended play)
 
 
 
