@@ -1,7 +1,8 @@
 #pragma once
+#include <string>
 class ThemeSong
 {
 public:
-	static void BatTheme(int numberOfNas = 13);//the DECLARATION of the method
+	void BatTheme(std::string name, int numberOfNas = 13) const;//the DECLARATION of the method
 };
 

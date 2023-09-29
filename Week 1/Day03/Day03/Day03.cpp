@@ -11,6 +11,15 @@ std::string postFix(std::string fileName, int postFixNumber = 1) //postFixNumber
     return fileName + "_" + std::to_string(postFixNumber);
 }
 
+void Print(const std::vector<std::string>& names)
+{
+    std::cout << "\n\n";
+    for (auto& name : names)
+    {
+        std::cout << name << "\n";
+    }
+}
+
 int main()
 {
     std::cout << "\033[1;31mbold red text\033[0m\n";
@@ -49,9 +58,9 @@ int main()
             EX: if 6 is passed, print "na na na na na na Batman"
 
     */
-    //ThemeSong musicBox;
-    ThemeSong::BatTheme();//traditional theme
-    ThemeSong::BatTheme(25); //EP (extended play)
+    ThemeSong musicBox;
+    musicBox.BatTheme("Batman!");//traditional theme
+    musicBox.BatTheme("BAAAAATMAAAAN!", 25); //EP (extended play)
 
 
 
@@ -92,4 +101,12 @@ int main()
     */
     std::vector<std::string> JLA = { "Batman", "Wonder Woman", "Superman", "Flash" };
 
+    auto DC = JLA;
+    DC.push_back("Aquaman");
+    DC.push_back("The Joker");
+    DC.push_back("Penguin");
+    DC.push_back("Bane");
+
+    Print(JLA);
+    Print(DC);
 }
