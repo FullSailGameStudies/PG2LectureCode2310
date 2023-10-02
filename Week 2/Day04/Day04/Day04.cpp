@@ -46,9 +46,11 @@ void Bats(int i)
 {
     if (i < 100)
     {
+        //return;//!! the recursive 'break'
         std::cout << (char)78 << (char)65 << ' ';
         Bats(++i);
     }
+    std::cout << i << "\n";
 }
 
 int main()
