@@ -26,8 +26,40 @@ unsigned long factorial(unsigned int N)
     return N * factorial(N - 1);
 }
 
+void AMethod(int num)
+{
+    //we need an EXIT CONDITION! something to stop the loop.
+    if (num < 10)
+    {
+        bool isTrue = false;
+        AMethod(num + 1);
+    }
+
+    //OR...
+    //if (num >= 10) return;
+
+    //bool isTrue = false;
+    //AMethod(num + 1);
+}
+
+void Bats(int i)
+{
+    if (i < 100)
+    {
+        std::cout << (char)78 << (char)65 << ' ';
+        Bats(++i);
+    }
+}
+
 int main()
 {
+    //for (size_t i = 0; i < 10; i++)
+    //{
+
+    //}
+    //int j = 0;
+    //while(j < 100) {}
+    AMethod(0);
     /*
         ╔═════════╗
         ║Recursion║
@@ -39,7 +71,7 @@ int main()
 
     */
     int N = 0;
-    recursiveLoop(N);
+    //recursiveLoop(N);
 
 
     /*
@@ -54,6 +86,7 @@ int main()
             }
     */
     //call Bats here.
+    Bats(0);//i = 0
 
     char c[] = { '\n', 66, 65, 84, 77, 65, 78, 33, 33 };
     for (auto ch : c) std::cout << ch;
