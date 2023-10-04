@@ -11,6 +11,20 @@ enum class Weapon
     Sword, Axe, Spear, Mace
 };
 
+int Linear(std::vector<int> searchVector, int searchItem)
+{
+    int foundIndex = -1;
+    for (size_t i = 0; i < searchVector.size(); i++)
+    {
+        if (searchItem == searchVector[i])
+        {
+            foundIndex = i;
+            break;
+        }
+    }
+    return foundIndex;
+}
+
 
 int main()
 {
@@ -35,7 +49,12 @@ int main()
 
     */
     std::vector<int> numbers = { 0,1,2,3,4,5,6 };
-    int searchNumber = 15;
+    int searchNumber = 6;
+    int index = Linear(numbers, searchNumber);
+    if (index >= 0)
+        std::cout << searchNumber << " was found at index " << index << "\n";
+    else
+        std::cout << searchNumber << " was NOT found.\n";
 
 
 
@@ -75,13 +94,34 @@ int main()
     dorasBackpack[Weapon::Axe] = 7;//simply overwrites the value if the key is already in the map
 
 
+    //declare a map variable
+    std::map<std::string, float> menu;
+
+    auto pair = std::make_pair<std::string, float>("Cheese Burger", 20.0F);
+    auto inserted = menu.insert(pair);//if already in the map, will NOT overwrite
+    //OR...
+    //map[key] = value;
+    menu["Curly Fries"] = 8.49;
+    menu["Curly Fries"] = 9.49;//overwrites the value
+    menu["Chicken Salad"] = 15.49;
+    menu["Pepperoni Pizza"] = 13.99;
+
     /*
         CHALLENGE 2:
 
-            Create a map that stores names (string) and grades. Call the variable grades.
+            Create a map that stores names (string) and grades. 
+            Call the variable grades.
             Add students and grades to your map.
 
     */
+    std::map<std::string, double> grades;
+    std::vector<std::string> names{ "Noah W", "Sylas", "Nathan", "Chanaya", "Connor", "Dontai", "Jade", "James", "Noah A", "Phillip" };
+
+    srand(time(NULL));
+    for (auto& student : names)
+    {
+        grades[student] = rand() % 101;
+    }
 
 
 

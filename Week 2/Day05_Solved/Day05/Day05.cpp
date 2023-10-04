@@ -112,6 +112,8 @@ int main()
     grades["Arthur"] = rand() % 101;
 
 
+    std::vector<std::string> names{ "Noah W", "Sylas", "Nathan", "Chanaya", "Connor", "Dontai", "Jade", "James", "Noah A", "Phillip" };
+
 
 
 
