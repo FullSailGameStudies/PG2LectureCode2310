@@ -5,6 +5,7 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <iomanip>
 
 enum class Weapon
 {
@@ -98,7 +99,7 @@ int main()
     std::map<std::string, float> menu;
 
     auto pair = std::make_pair<std::string, float>("Cheese Burger", 20.0F);
-    auto inserted = menu.insert(pair);//if already in the map, will NOT overwrite
+    auto inserted2 = menu.insert(pair);//if already in the map, will NOT overwrite
     //OR...
     //map[key] = value;
     menu["Curly Fries"] = 8.49;
@@ -114,10 +115,10 @@ int main()
             Add students and grades to your map.
 
     */
-    std::map<std::string, double> grades;
     std::vector<std::string> names{ "Noah W", "Sylas", "Nathan", "Chanaya", "Connor", "Dontai", "Jade", "James", "Noah A", "Phillip" };
 
     srand(time(NULL));
+    std::map<std::string, double> grades;
     for (auto& student : names)
     {
         grades[student] = rand() % 101;
@@ -160,6 +161,24 @@ int main()
         std::cout << val << "\n";
     }
 
+    auto menuIter = menu.begin();
+    while (menuIter != menu.end())
+    {
+        std::cout << menuIter->first << "\t" << menuIter->second << "\n";
+        ++menuIter;
+    }
+    //OR...
+    for (auto it = menu.begin(); it != menu.end(); ++it)
+    {
+
+    }
+
+    std::cout << "\n\n  Missing CurlyBoy   \n";
+    for (auto& [menuItem,price] : menu)
+    {
+        std::cout << menuItem << "\t" << price << "\n";
+    }
+
 
     /*
         CHALLENGE 4:
@@ -167,6 +186,11 @@ int main()
             Loop over your grades map and print each student name and grade.
 
     */
+    std::cout << "\n\n   PG2 2310   \n";
+    for (auto& [student,grade] : grades)
+    {
+        std::cout << std::setw(6) << grade << "  " << student << "\n";
+    }
 
 
 
@@ -192,6 +216,12 @@ int main()
         //can safely grab the value for the key
         std::cout << "Dora found " << foundIter->second << " Maces\n";
     }
+
+    auto menuFind = menu.find("Chicken Salad");
+    if (menuFind != menu.end()) //found it!
+        std::cout << menuFind->first << " costs " << menuFind->second << "\n";
+    else
+        std::cout << "That is not on the menu! Try McDonald's\n";
 
 
 
