@@ -6,13 +6,14 @@
 #include <map>
 #include <vector>
 #include <iomanip>
+#include "Day05.h"
 
 enum class Weapon
 {
     Sword, Axe, Spear, Mace
 };
 
-int Linear(std::vector<int> searchVector, int searchItem)
+int Linear(const std::vector<int>& searchVector, int searchItem)
 {
     int foundIndex = -1;
     for (size_t i = 0; i < searchVector.size(); i++)
@@ -26,6 +27,15 @@ int Linear(std::vector<int> searchVector, int searchItem)
     return foundIndex;
 }
 
+
+void PrintCourse(const std::map<std::string, double>& grades)
+{
+    std::cout << "\n\n   PG2 2310   \n";
+    for (auto& [student, grade] : grades)
+    {
+        std::cout << std::setw(6) << grade << "  " << student << "\n";
+    }
+}
 
 int main()
 {
@@ -186,11 +196,7 @@ int main()
             Loop over your grades map and print each student name and grade.
 
     */
-    std::cout << "\n\n   PG2 2310   \n";
-    for (auto& [student,grade] : grades)
-    {
-        std::cout << std::setw(6) << grade << "  " << student << "\n";
-    }
+    PrintCourse(grades);
 
 
 
@@ -233,7 +239,14 @@ int main()
             else print out a message that the student was not found
 
     */
+    std::string studentToFind = "Noah W";
+    auto foundStudent = grades.find(studentToFind);
+    if (foundStudent != grades.end())
+        std::cout << studentToFind << " has a grade of " << foundStudent->second << "\n";
+    else
+        std::cout << studentToFind << " is not in PG2 this month.\n";
 
+    std::cout << grades["Diana Prince"] << "\n";
 
 
 
@@ -251,6 +264,10 @@ int main()
     dorasBackpack[Weapon::Axe] = 1;//updates the count for the axe
 
 
+    std::string salad = "Chicken Salad";
+    menu[salad] = 21.99;
+    std::cout << salad << " now costs " << menu[salad] << "! Thanks Putin.\n";
+
 
     /*
         CHALLENGE 6:
@@ -258,4 +275,11 @@ int main()
             Pick any student and curve the grade (add 5) that is stored in the grades map
 
     */
+    std::string studentToCurve = "Sylas";
+    char first = studentToCurve[0];
+    std::cout << first << "\n";
+    double& sylasGrade = grades[studentToCurve];//get the value
+    sylasGrade = std::min<double>(100, sylasGrade + 5);
+    //grades[studentToCurve] = std::min<double>(100, sylasGrade + 5);
+    PrintCourse(grades);
 }
