@@ -16,7 +16,7 @@ void PrintGrades(const std::map<std::string, double>& grades)
 {
     for (auto& [name,grade] : grades)
     {
-        std::cout << std::setw(7) << grade << " " << name << "\n";
+        std::cout << std::setw(7) <<  grade << " " << std::setw(15) << name << "\n";
     }
 }
 
