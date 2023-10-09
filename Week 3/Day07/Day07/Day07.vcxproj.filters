@@ -18,5 +18,22 @@
     <ClCompile Include="Day07.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Pickaxe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Pickaxe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="enums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

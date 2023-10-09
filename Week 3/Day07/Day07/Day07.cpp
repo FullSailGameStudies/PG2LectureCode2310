@@ -52,13 +52,10 @@ int main()
     /*
         CHALLENGE:
 
-            Create a Person class.
+            Create a Player class.
             Right-Click the project and select "Add > Class..."
 
     */
-
-
-
 
     /*
         ╔════════╗
@@ -69,13 +66,13 @@ int main()
 
         int mModelYear;
 
-        Lecture code: add year, make, model fields to the car class
 
     */
 
     /*
         CHALLENGE:
-            Add an age field and a name field to the Person class
+            
+            Add these Fields: gamertag, health, experience, armorLevel
     */
 
 
