@@ -6,10 +6,12 @@
 #include "Inheritance.h"
 #include "Polymorphism.h"
 #include "Car.h"
+#include "Shovel.h"
 
 
 int main()
 {
+	Shovel digger(Material::Diamond);
 	/*
         ╔═══════════════╗
         ║  Inheritance  ║

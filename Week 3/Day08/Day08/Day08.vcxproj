@@ -129,12 +129,16 @@
   <ItemGroup>
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="Day08.cpp" />
+    <ClCompile Include="Shovel.cpp" />
+    <ClCompile Include="Tool.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Car.h" />
     <ClInclude Include="Inheritance.h" />
     <ClInclude Include="Polymorphism.h" />
+    <ClInclude Include="Shovel.h" />
+    <ClInclude Include="Tool.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
