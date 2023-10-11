@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+#include <string>
 
 enum Material
 {
@@ -20,6 +22,13 @@ public:
 	Tool(Material material, float durability, float damage) : 
 		material_(material), durability_(durability), damage_(damage)
 	{}
+
+	//tells the compiler that the method MIGHT be overridden in a derived class
+	virtual float DoDamage()
+	{
+		//take the damage and return some random effect
+		return 0.0F;
+	}
 
 	//getters (accessors)
 	Material GetMaterial() const
@@ -54,7 +63,39 @@ public:
 	}
 
 
-private:
+	//override this method in the Shovel class
+	virtual void Show()
+	{
+		std::cout << "\nI am a " << GetMaterial() << " tool that does " << damage_ << " damage.\n";
+	}
+
+
+protected:
+	std::string GetMaterial()
+	{
+		std::string material = "unknown";
+		switch (material_)
+		{
+		case Wood:
+			material = "Wood";
+			break;
+		case Stone:
+			material = "Stone";
+			break;
+		case Iron:
+			material = "Iron";
+			break;
+		case Diamond:
+			material = "Diamond";
+			break;
+		case Netherite:
+			material = "Netherite";
+			break;
+		default:
+			break;
+		}
+		return material;
+	}
 
 	//FIELDS: variables defined at the class level, not the method level
 	Material material_;

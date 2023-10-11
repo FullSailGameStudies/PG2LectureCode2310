@@ -12,6 +12,12 @@
 int main()
 {
 	Shovel digger(Material::Diamond);
+	Shovel digger2(Material::Diamond);
+	Shovel crafted = digger + digger2;
+
+	digger.DoDamage();//calling the Shovel::DoDamage method
+	digger.Show();
+	Tool tool(Material::Netherite);
 	/*
         ╔═══════════════╗
         ║  Inheritance  ║
