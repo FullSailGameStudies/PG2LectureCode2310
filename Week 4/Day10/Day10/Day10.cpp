@@ -198,6 +198,14 @@ int main()
         std::cout << h.GetAge() << " years old!\n";
     }
 
+    //SERIALIZE the hero vector to the console
+    std::cout << "\n Serializing to the console \n";
+    for (auto& h : heroes)
+    {
+        h.Serialize(std::cout, '\t');
+        std::cout << "\n";
+    }
+
     //SERIALIZE the hero vector to a file
     std::string heroFile = "heroes.csv";
     fullPath = directory + heroFile;
