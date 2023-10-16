@@ -233,6 +233,8 @@ int main()
                 DC.push_back(hero2);//push the hero to the vector
             }
         }
+
+        //print the results to prove it worked
         std::cout << "\n Deserialized heroes \n";
         for (auto& h : DC)//loop over the deserialized heroes
         {
@@ -241,5 +243,6 @@ int main()
         }
 
     }
+    heroIn.close();
 
 }

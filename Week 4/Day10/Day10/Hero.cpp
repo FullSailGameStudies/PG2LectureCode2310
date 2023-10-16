@@ -6,8 +6,7 @@ Hero::Hero(std::string name, std::string secret, int age) :
 {
 }
 
-Hero::Hero(std::string csvData, char delimiter) :
-	name_(""), secret_(""), age_(0)
+Hero::Hero(std::string csvData, char delimiter) : name_(""), secret_(""), age_(0)
 {
 	Deserialize(csvData, delimiter);
 }
