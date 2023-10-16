@@ -197,4 +197,19 @@ int main()
         std::cout << "Hello citizen. I am " << h.GetName() << " (aka " << h.GetSecret() << "). I am ";
         std::cout << h.GetAge() << " years old!\n";
     }
+
+    //SERIALIZE the hero vector to a file
+    std::string heroFile = "heroes.csv";
+    fullPath = directory + heroFile;
+    std::ofstream heroOutFile(fullPath);
+    if (heroOutFile.is_open())
+    {
+        for (auto& h : heroes)
+        {
+            h.Serialize(heroOutFile, '^');
+            heroOutFile << "\n";
+        }
+    }
+    heroOutFile.close();
+
 }

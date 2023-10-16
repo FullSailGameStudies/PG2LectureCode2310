@@ -1,4 +1,5 @@
 #pragma once
+#include <fstream>
 #include <string>
 
 class Hero
@@ -14,6 +15,11 @@ public:
 
 	int GetAge() const { return age_; }
 	void SetAge(int age) { age_ = age; }
+
+	void Serialize(std::ofstream& out, char delimiter)
+	{
+		out << name_ << delimiter << secret_ << delimiter << age_;//write the hero state to a stream
+	}
 private:
 	std::string name_, secret_;
 	int age_;
