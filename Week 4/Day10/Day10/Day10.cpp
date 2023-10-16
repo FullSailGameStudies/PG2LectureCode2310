@@ -220,4 +220,26 @@ int main()
     }
     heroOutFile.close();
 
+    std::vector<Hero> DC;
+    std::ifstream heroIn(fullPath);//open the file
+    if (heroIn.is_open())//check if the file is open
+    {
+        std::string heroLine;
+        while (std::getline(heroIn, heroLine))//read each hero line
+        {
+            if (heroLine.size() > 0)//if the hero line is not empty
+            {
+                Hero hero2(heroLine, '^');//call the hero ctor that deserializes
+                DC.push_back(hero2);//push the hero to the vector
+            }
+        }
+        std::cout << "\n Deserialized heroes \n";
+        for (auto& h : DC)//loop over the deserialized heroes
+        {
+            h.Serialize(std::cout, '\t');//serialize to the console
+            std::cout << "\n";
+        }
+
+    }
+
 }
