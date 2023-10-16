@@ -6,6 +6,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include "Hero.h"
 
 
 
@@ -78,53 +79,58 @@ int main()
     */
     std::ifstream inFile(fullPath);//step 1: open the file
 
-    //step 2: read the data
-    std::string line;
-    int lineNum = 1;
-    while (std::getline(inFile, line))//(input stream, string)
+    if (inFile.is_open())
     {
-        std::cout << lineNum++ << " ";
-        std::cout << line << "\n";
-        //1) turn the string into a string stream
-        std::stringstream batStream(line);
-        std::string batString;
-        int itemNum = 1;
-        if (lineNum == 2)
+        //step 2: read the data
+        std::string line;
+        int lineNum = 1;
+        while (std::getline(inFile, line))//(input stream, string)
         {
-            while (std::getline(batStream, batString, delimiter))//parsing the csv string
+            std::cout << lineNum++ << " ";
+            std::cout << line << "\n";
+            //1) turn the string into a string stream
+            std::stringstream batStream(line);
+            std::string batString;
+            int itemNum = 1;
+            if (lineNum == 2)
             {
-                std::cout << "\t" << itemNum++ << " ";
-                std::cout << batString << "\n";
+                while (std::getline(batStream, batString, delimiter))//parsing the csv string
+                {
+                    std::cout << "\t" << itemNum++ << " ";
+                    std::cout << batString << "\n";
+                }
             }
-        }
-        else
-        {
-            while (std::getline(batStream, batString, delimiter))//parsing the csv string
+            else
             {
-                std::cout << "\t" << itemNum << " ";
-                if (itemNum == 1)
+                while (std::getline(batStream, batString, delimiter))//parsing the csv string
                 {
-                    //int
-                    int num = std::stoi(batString);//converts a string to an int
-                    std::cout << num << "\n";
+                    std::cout << "\t" << itemNum << " ";
+                    if (itemNum == 1)
+                    {
+                        //int
+                        int num = std::stoi(batString);//converts a string to an int
+                        std::cout << num << "\n";
+                    }
+                    else if (itemNum == 2)
+                    {
+                        //bool
+                        bool isTrue = batString == "1";
+                        std::cout << isTrue << "\n";
+                    }
+                    else
+                    {
+                        //double
+                        double dNum = std::stod(batString);//converts a string to a double
+                        std::cout << dNum << "\n";
+                    }
+                    ++itemNum;
+                    //std::cout << batString << "\n";
                 }
-                else if (itemNum == 2)
-                {
-                    //bool
-                    bool isTrue = batString == "1";
-                    std::cout << isTrue << "\n";
-                }
-                else
-                {
-                    //double
-                    double dNum = std::stod(batString);//converts a string to a double
-                    std::cout << dNum << "\n";
-                }
-                ++itemNum;
-                //std::cout << batString << "\n";
             }
         }
     }
+    else
+        std::cout << "The file could not be opened.\n";
 
     inFile.close();//step 3: close the file
 
@@ -163,7 +169,32 @@ int main()
             name^secret^age  the details of each hero is separated by a ^
 
     */
+    //Create a Hero class (Name, Secret, Age)
+    //create a vector of Hero
+    //split the data creating heroes, put them into the vector, print the vector!!!
+    //Yeah Monday.
     std::string multi = "Batman^Bruce Wayne^35#Superman^Clark Kent^25#Wonder Woman^Diana Prince^25#Aquaman^Arthur Curry^12";
     char collectionSeparator = '#';
     char objectSeparator = '^';
+
+    std::vector<Hero> heroes;
+    std::stringstream multiStream(multi);
+    std::string heroString;
+    while (std::getline(multiStream, heroString, collectionSeparator))
+    {
+        std::stringstream heroStream(heroString);
+        std::string name, secret, ageData;
+        std::getline(heroStream, name, objectSeparator);
+        std::getline(heroStream, secret, objectSeparator);
+        std::getline(heroStream, ageData, objectSeparator);
+        Hero hero(name, secret, std::stoi(ageData));
+        heroes.push_back(hero);
+    }
+
+    std::cout << "\n\nPG2 Heroes\n";
+    for (auto& h : heroes)
+    {
+        std::cout << "Hello citizen. I am " << h.GetName() << " (aka " << h.GetSecret() << "). I am ";
+        std::cout << h.GetAge() << " years old!\n";
+    }
 }
