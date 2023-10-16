@@ -58,7 +58,7 @@ int main()
 
         //step 2: write to the file
         outFile << "Bruce Wayne" << delimiter << "Batman" << delimiter;
-        outFile << "The Greatest Detective" << delimiter << "NOT Aquaman" << delimiter;
+        outFile << "The Greatest Detective" << delimiter << "NOT Aquaman" << "\n";
         outFile << 5123451 << delimiter << true << delimiter << 420.13;
         
         //outFile.close();//step 3: close the file
@@ -76,6 +76,57 @@ int main()
 
         Lecture code: using the filePath variable, open an input file, use getline to read a line, print the line
     */
+    std::ifstream inFile(fullPath);//step 1: open the file
+
+    //step 2: read the data
+    std::string line;
+    int lineNum = 1;
+    while (std::getline(inFile, line))//(input stream, string)
+    {
+        std::cout << lineNum++ << " ";
+        std::cout << line << "\n";
+        //1) turn the string into a string stream
+        std::stringstream batStream(line);
+        std::string batString;
+        int itemNum = 1;
+        if (lineNum == 2)
+        {
+            while (std::getline(batStream, batString, delimiter))//parsing the csv string
+            {
+                std::cout << "\t" << itemNum++ << " ";
+                std::cout << batString << "\n";
+            }
+        }
+        else
+        {
+            while (std::getline(batStream, batString, delimiter))//parsing the csv string
+            {
+                std::cout << "\t" << itemNum << " ";
+                if (itemNum == 1)
+                {
+                    //int
+                    int num = std::stoi(batString);//converts a string to an int
+                    std::cout << num << "\n";
+                }
+                else if (itemNum == 2)
+                {
+                    //bool
+                    bool isTrue = batString == "1";
+                    std::cout << isTrue << "\n";
+                }
+                else
+                {
+                    //double
+                    double dNum = std::stod(batString);//converts a string to a double
+                    std::cout << dNum << "\n";
+                }
+                ++itemNum;
+                //std::cout << batString << "\n";
+            }
+        }
+    }
+
+    inFile.close();//step 3: close the file
 
 
     /*
