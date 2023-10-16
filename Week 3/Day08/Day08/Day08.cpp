@@ -11,6 +11,7 @@
 
 int main()
 {
+	//these are all STACK instances. objects are created on the stack.
 	Shovel digger(Material::Diamond);
 	Shovel digger2(Material::Diamond);
 	Shovel crafted = digger + digger2;
@@ -18,6 +19,36 @@ int main()
 	digger.DoDamage();//calling the Shovel::DoDamage method
 	digger.Show();
 	Tool tool(Material::Netherite);
+
+	Tool t2 = digger2;//cast and create a new object
+
+	//unique pointers are allocated (memory) on the HEAP.
+	//the variable in the stack POINTS to the memory location in the HEAP.
+	{
+		Shovel* pShovel = new Shovel(Material::Wood);//created on the HEAP
+		Shovel* pShovel2 = pShovel;//pointing to the same object
+
+		std::cout << pShovel << "\n";
+		pShovel->Show();
+		delete pShovel; //clean up the HEAP memory
+		//if I don't delete pShovel, I have a memory leak
+		//pShovel->Show();//BOOM!
+		pShovel = nullptr;
+		if (pShovel != nullptr)
+			pShovel->Show();
+	}
+
+	{
+		std::unique_ptr<Tool> uPtrTool = std::make_unique<Shovel>(Material::Iron);
+		uPtrTool->Show();//checks the vtable, sees that it has been overridden and calls the Shovel's Show method
+	}//when it goes out of scope, uShovel is cleaned up (deleted)
+
+
+	int num = 10;
+	long bigNum = num;//implicit cast
+	num = bigNum;//?? 8 bytes to 4 bytes?!
+	float fNum = 5;
+	num = (int)fNum;//explicit cast
 	/*
         ╔═══════════════╗
         ║  Inheritance  ║

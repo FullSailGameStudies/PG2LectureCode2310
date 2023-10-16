@@ -48,7 +48,21 @@ int main()
 
         Lecture code: set a filePath variable, open an output file, write some csv data to it
     */
+    std::string directory = "C:\\temp\\2310\\";
+    std::string fileName = "bat.csv";
+    std::string fullPath = directory + fileName;
 
+    char delimiter = '%';
+    {
+        std::ofstream outFile(fullPath);//step 1: open the file
+
+        //step 2: write to the file
+        outFile << "Bruce Wayne" << delimiter << "Batman" << delimiter;
+        outFile << "The Greatest Detective" << delimiter << "NOT Aquaman" << delimiter;
+        outFile << 5123451 << delimiter << true << delimiter << 420.13;
+        
+        //outFile.close();//step 3: close the file
+    }//closes automatically  //step 3: close the file
 
     /*
 

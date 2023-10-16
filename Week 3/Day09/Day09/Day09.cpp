@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "static.h"
+#include "abstract.h"
 
 /*
 Nested class
@@ -14,7 +15,7 @@ Friends
 
 int main()
 {
-
+    Grenade frag;
     /*
         ╔════════════════════╗
         ║  Static Variables  ║
